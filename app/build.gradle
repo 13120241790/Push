@@ -10,6 +10,16 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        config {
+            storeFile file("julivepush.keystore")
+            storePassword "comjia123"
+            keyAlias "julivepush"
+            keyPassword "comjia123"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
