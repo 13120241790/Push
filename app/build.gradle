@@ -11,18 +11,23 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
- /*   signingConfigs {
+    signingConfigs {
         config {
             storeFile file("julivepush.keystore")
             storePassword "comjia123"
             keyAlias "julivepush"
             keyPassword "comjia123"
         }
-    }*/
+    }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.config
+        }
         release {
             minifyEnabled false
+            signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
