@@ -11,14 +11,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
+ /*   signingConfigs {
         config {
             storeFile file("julivepush.keystore")
             storePassword "comjia123"
             keyAlias "julivepush"
             keyPassword "comjia123"
         }
-    }
+    }*/
 
     buildTypes {
         release {

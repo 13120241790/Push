@@ -16,17 +16,17 @@
 
     <!-- 接收PUSH TOKEN的广播以及PUSH消息需要定义该权限 ${PACKAGE_NAME} 要替换上您应用的包名 -->
     <permission
-        android:name="${PACKAGE_NAME}.permission.PROCESS_PUSH_MSG"
+        android:name="${applicationId}.permission.PROCESS_PUSH_MSG"
         android:protectionLevel="signatureOrSystem" />
     <!--接收PUSH TOKEN的广播以及PUSH消息需要定义该权限 ${PACKAGE_NAME} 要替换上您应用的包名 -->
-    <uses-permission android:name="${PACKAGE_NAME}.permission.PROCESS_PUSH_MSG" />
+    <uses-permission android:name="${applicationId}.permission.PROCESS_PUSH_MSG" />
 
     <!--PUSH Provider相关权限 -->
     <permission
-        android:name="${PACKAGE_NAME}.permission.PUSH_PROVIDER"
+        android:name="${applicationId}.permission.PUSH_PROVIDER"
         android:protectionLevel="signatureOrSystem" />
     <permission
-        android:name="${PACKAGE_NAME}.permission.PUSH_WRITE_PROVIDER"
+        android:name="${applicationId}.permission.PUSH_WRITE_PROVIDER"
         android:protectionLevel="signatureOrSystem" />
 
     <application>
@@ -50,7 +50,7 @@
 
         <!-- 解决华为移动服务升级问题的透明界面（必须声明）-->
         <activity
-            android:name=".platform.hms.agent.common.HMSAgentActivity"
+            android:name="com.huawei.android.hms.agent.common.HMSAgentActivity"
             android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
             android:excludeFromRecents="true"
             android:exported="true"
