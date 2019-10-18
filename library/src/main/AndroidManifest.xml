@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.comjia.push.library">
-
+    <!--华为权限开始-->
     <!--HMS-SDK引导升级HMS功能，访问OTA服务器需要网络权限-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!--HMS-SDK引导升级HMS功能，保存下载的升级包需要SD卡写权限-->
@@ -28,6 +28,18 @@
     <permission
         android:name="${applicationId}.permission.PUSH_WRITE_PROVIDER"
         android:protectionLevel="signatureOrSystem" />
+    <!--华为权限结束-->
+
+    <!--极光权限开始-->
+    <!-- Required -->
+    <permission
+        android:name="${applicationId}.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <!-- Required  一些系统要求的权限，如访问网络等-->
+    <uses-permission android:name="${applicationId}.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <!--极光权限结束-->
 
     <application>
 
@@ -101,8 +113,37 @@
                 <action android:name="com.huawei.intent.action.PUSH_STATE" />
             </intent-filter>
         </receiver>
+        <!-- 华为推送 end -->
 
+        <!--极光 start -->
 
+        <!-- Since JCore2.0.0 Required SDK核心功能-->
+        <!-- 可配置android:process参数将Service放在其他进程中；android:enabled属性不能是false -->
+        <!-- 这个是自定义Service，要继承极光JCommonService，可以在更多手机平台上使得推送通道保持的更稳定 -->
+        <service android:name="com.comjia.push.library.platform.jpush.JPushService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action" />
+            </intent-filter>
+        </service>
+
+        <!-- Required since 3.0.7 -->
+        <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->
+        <!-- 3.3.0开始所有事件将通过该类回调 -->
+        <!-- 该广播需要继承 JPush 提供的 JPushMessageReceiver 类, 并如下新增一个 Intent-Filter -->
+        <receiver
+            android:name=".platform.jpush.JPushMessageWrapperReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+
+        <!--极光 end-->
     </application>
 
 
