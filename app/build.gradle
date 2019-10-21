@@ -19,6 +19,12 @@ android {
         }
     }
 
+    lintOptions {
+
+        abortOnError false
+
+    }
+
     buildTypes {
         debug {
             minifyEnabled false

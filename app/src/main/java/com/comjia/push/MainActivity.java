@@ -8,6 +8,7 @@ import com.huawei.android.hms.agent.HMSAgent;
 import com.huawei.android.hms.agent.common.handler.ConnectHandler;
 import com.huawei.android.hms.agent.push.handler.GetTokenHandler;
 import com.huawei.hms.api.ConnectionResult;
+import com.xiaomi.mipush.sdk.MiPushClient;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //华为连接
         HMSAgent.connect(this, new ConnectHandler() {
             @Override
             public void onConnect(int rst) {
@@ -32,5 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Log.d(TAG, "MI regId " + MiPushClient.getRegId(this));
     }
 }
