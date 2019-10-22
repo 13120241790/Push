@@ -4,6 +4,8 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.comjia.push.library.PushListenerProxy;
+import com.comjia.push.library.PushType;
 import com.xiaomi.mipush.sdk.ErrorCode;
 import com.xiaomi.mipush.sdk.MiPushClient;
 import com.xiaomi.mipush.sdk.MiPushCommandMessage;
@@ -75,6 +77,9 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
         if (MiPushClient.COMMAND_REGISTER.equals(command)) {
             if (message.getResultCode() == ErrorCode.SUCCESS) {
                 mRegId = cmdArg1;
+                if (!TextUtils.isEmpty(mRegId)) {
+                    PushListenerProxy.onRegister(mRegId, PushType.XIAOMI);
+                }
                 Log.e(TAG, "onCommandResult regId :" + mRegId);
             }
         } else if (MiPushClient.COMMAND_SET_ALIAS.equals(command)) {

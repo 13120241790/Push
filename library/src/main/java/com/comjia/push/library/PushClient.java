@@ -13,10 +13,14 @@ public class PushClient {
 
     public static final String TAG = PushClient.class.getSimpleName();
 
-    public static void init(Context context, PushConfig config) {
+    public static void init(Context context, PushConfig config, PushStatusListener pushStatusListener) {
         if (config == null) {
             throw new NullPointerException("Push config is empty~!");
         }
+        if (pushStatusListener == null) {
+            throw new NullPointerException("Push Status Listener is empty~!");
+        }
+        PushListenerProxy.setStatusListener(pushStatusListener);
         PushType currentPushType;
         if (config.getOnlyPush() != null) {
             currentPushType = config.getOnlyPush();
@@ -34,4 +38,5 @@ public class PushClient {
         }
         push.register(context, config);
     }
+
 }

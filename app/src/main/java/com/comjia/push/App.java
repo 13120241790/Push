@@ -3,9 +3,11 @@ package com.comjia.push;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import com.comjia.push.library.PushClient;
 import com.comjia.push.library.PushConfig;
+import com.comjia.push.library.PushStatusListener;
 import com.comjia.push.library.PushType;
 
 import java.util.List;
@@ -15,6 +17,7 @@ public class App extends Application {
 
     public static final String MI_APP_ID = "2882303761518212082";
     public static final String MI_APP_KEY = "5671821258082";
+    public static final String TAG = PushClient.TAG;
 
     @Override
     public void onCreate() {
@@ -22,8 +25,24 @@ public class App extends Application {
 
         //初始化push推送服务
         if (shouldInit()) {
-            new PushConfig().setOnlyPush(PushType.HUAWEI);
-            PushClient.init(this, new PushConfig().configMiPush(MI_APP_ID, MI_APP_KEY));
+            PushConfig config = new PushConfig().configMiPush(MI_APP_ID, MI_APP_KEY);
+            PushClient.init(this, config, new PushStatusListener() {
+                @Override
+                public void onRegister(String registerId, PushType pushType) {
+                    Log.e(TAG, "push type: " + pushType.getName() + " push regId :" + registerId);
+                }
+
+                @Override
+                public void onError(String error, PushType pushType) {
+
+                }
+
+                @Override
+                public void onPushConnected() {
+
+                }
+            });
+
         }
 
     }

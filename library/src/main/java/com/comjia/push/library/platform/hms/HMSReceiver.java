@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.comjia.push.library.PushListenerProxy;
+import com.comjia.push.library.PushType;
 import com.huawei.hms.support.api.push.PushReceiver;
 
 public class HMSReceiver extends PushReceiver {
@@ -12,6 +14,7 @@ public class HMSReceiver extends PushReceiver {
     @Override
     public void onToken(Context context, String token, Bundle bundle) {
         Log.e(TAG, "token: " + token);
+        PushListenerProxy.onRegister(token, PushType.HUAWEI);
     }
 
     @Override

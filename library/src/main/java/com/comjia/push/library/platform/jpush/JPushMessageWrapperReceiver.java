@@ -2,7 +2,11 @@ package com.comjia.push.library.platform.jpush;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Log;
+
+import com.comjia.push.library.PushListenerProxy;
+import com.comjia.push.library.PushType;
 
 import cn.jpush.android.api.CmdMessage;
 import cn.jpush.android.api.CustomMessage;
@@ -26,15 +30,16 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
         super.onNotifyMessageOpened(context, notificationMessage);
     }
 
+
     /**
      * 3、新功能
-     *
+     * <p>
      * Android SDK v3.1.7 开始直接支持点击跳转到指定页面
-     *
+     * <p>
      * 需要在 REST API 发消息的时候设置 Notification-Android-intent 字段
-     *
+     * <p>
      * https://community.jiguang.cn/t/topic/39120/6
-     *
+     * <p>
      * 合并通知有坑
      */
 
@@ -53,9 +58,8 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
 
     @Override
     public void onRegister(Context context, String s) {
-        // registrationID仅仅在第一次初始化的时候才会有这个广播，以后要获取需要主动调用 getregistrationID
-        Log.e(TAG, "onRegister : " + s);
-//        JPushInterface.getRegistrationID()
+        // registrationID 仅仅在第一次初始化的时候才会有这个广播，以后要获取需要主动调用 JPushInterface.getRegistrationID
+        PushListenerProxy.onRegister(s, PushType.JPUSH);
         super.onRegister(context, s);
     }
 
