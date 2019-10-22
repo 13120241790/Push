@@ -3,9 +3,10 @@ package com.comjia.push.library;
 import android.text.TextUtils;
 
 public enum PushType {
-    J_PUSH("J_PUSH"),
+    UNKNOWN("UNKNOWN"),
     HUAWEI("HW"),
     XIAOMI("MI"),
+    JPUSH("JPUSH"),
     MEIZU("MEIZU"),
     VIVO("VIVO"),
     OPPO("OPPO");
@@ -22,13 +23,13 @@ public enum PushType {
 
     public static PushType getType(String name) {
         if (TextUtils.isEmpty(name)) {
-            return J_PUSH;
+            return UNKNOWN;
         }
         for (PushType type : PushType.values()) {
             if (type.getName().equals(name)) {
                 return type;
             }
         }
-        return J_PUSH;
+        return UNKNOWN;
     }
 }

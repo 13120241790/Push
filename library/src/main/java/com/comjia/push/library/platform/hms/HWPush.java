@@ -5,17 +5,20 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
 
+import com.comjia.push.library.PushConfig;
 import com.comjia.push.library.platform.IPush;
 import com.huawei.android.hms.agent.HMSAgent;
 import com.huawei.android.hms.agent.common.handler.ConnectHandler;
 import com.huawei.android.hms.agent.push.handler.GetTokenHandler;
 import com.huawei.hms.api.ConnectionResult;
 
+import java.util.Arrays;
+
 public class HWPush implements IPush {
     private static final String TAG = HWPush.class.getSimpleName();
 
     @Override
-    public void register(final Context context) {
+    public void register(final Context context, PushConfig config) {
         Handler handler = new Handler(context.getMainLooper());
         handler.post(new Runnable() {
             @Override
