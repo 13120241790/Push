@@ -17,7 +17,7 @@ import cn.jpush.android.service.JPushMessageReceiver;
 public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
 
     public static final String TAG = "JPushMessageReceiver";
-
+    //自定义消息走 on message 理解为透传
     @Override
     public void onMessage(Context context, CustomMessage customMessage) {
         Log.e(TAG, "onMessage : " + customMessage.message);
@@ -26,6 +26,7 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
 
     @Override
     public void onNotifyMessageOpened(Context context, NotificationMessage notificationMessage) {
+        Log.e("PushMessage", "click message string : " + notificationMessage.toString());
         Log.e(TAG, "onNotifyMessageOpened : " + notificationMessage.notificationContent);
         super.onNotifyMessageOpened(context, notificationMessage);
     }
@@ -46,6 +47,7 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
 
     @Override
     public void onNotifyMessageArrived(Context context, NotificationMessage notificationMessage) {
+        Log.e("PushMessage", "arrived message string : " + notificationMessage.toString());
         Log.e(TAG, "onNotifyMessageArrived : " + notificationMessage.notificationContent);
         super.onNotifyMessageArrived(context, notificationMessage);
     }

@@ -12,8 +12,6 @@ import com.huawei.android.hms.agent.common.handler.ConnectHandler;
 import com.huawei.android.hms.agent.push.handler.GetTokenHandler;
 import com.huawei.hms.api.ConnectionResult;
 
-import java.util.Arrays;
-
 public class HWPush implements IPush {
     private static final String TAG = HWPush.class.getSimpleName();
 

@@ -46,6 +46,7 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     @Override
     public void onNotificationMessageClicked(Context context, MiPushMessage message) {
         mMessage = message.getContent();
+        Log.e("PushMessage", " click message string : " + message.toString());
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {
@@ -59,6 +60,7 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     @Override
     public void onNotificationMessageArrived(Context context, MiPushMessage message) {
         mMessage = message.getContent();
+        Log.e("PushMessage", "arrived message string : " + message.toString());
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {

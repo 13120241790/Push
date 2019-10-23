@@ -30,10 +30,12 @@ public class PushClient {
         }
         IPush push;
         if (currentPushType == PushType.HUAWEI) {
+            PushUtils.checkHwManifestKey(context);
             push = new HWPush();
         } else if (currentPushType == PushType.XIAOMI) {
             push = new MiPush();
         } else {
+            PushUtils.checkJManifestKey(context);
             push = new JPush();
         }
         push.register(context, config);
