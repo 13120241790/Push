@@ -1,0 +1,11 @@
+{
+	"client":{
+		"cp_id":"890086000300134347",
+		"product_id":"9105385871708170131",
+		"client_id":"214164366948304064",
+		"client_secret":"CFAF1006DA3A8C55DC5980DCFF491EB98717D79096227C6782BF38C650E0F397",
+		"app_id":"101221803",
+		"package_name":"com.comjia.push"
+	},
+	"configuration_version":"1.0"
+}
