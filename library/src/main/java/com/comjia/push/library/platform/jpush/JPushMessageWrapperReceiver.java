@@ -2,7 +2,6 @@ package com.comjia.push.library.platform.jpush;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.comjia.push.library.PushListenerProxy;
@@ -10,16 +9,17 @@ import com.comjia.push.library.PushType;
 
 import cn.jpush.android.api.CmdMessage;
 import cn.jpush.android.api.CustomMessage;
-import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.NotificationMessage;
 import cn.jpush.android.service.JPushMessageReceiver;
 
 public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
 
     public static final String TAG = "JPushMessageReceiver";
+
     //自定义消息走 on message 理解为透传
     @Override
     public void onMessage(Context context, CustomMessage customMessage) {
+        PushListenerProxy.onTransparentMessage(customMessage.toString(), PushType.JPUSH);
         Log.e(TAG, "onMessage : " + customMessage.message);
         super.onMessage(context, customMessage);
     }
@@ -27,6 +27,7 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
     @Override
     public void onNotifyMessageOpened(Context context, NotificationMessage notificationMessage) {
         Log.e("PushMessage", "click message string : " + notificationMessage.toString());
+        PushListenerProxy.onNotificationOpened(notificationMessage.toString(), PushType.JPUSH);
         Log.e(TAG, "onNotifyMessageOpened : " + notificationMessage.notificationContent);
         super.onNotifyMessageOpened(context, notificationMessage);
     }
@@ -49,6 +50,7 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
     public void onNotifyMessageArrived(Context context, NotificationMessage notificationMessage) {
         Log.e("PushMessage", "arrived message string : " + notificationMessage.toString());
         Log.e(TAG, "onNotifyMessageArrived : " + notificationMessage.notificationContent);
+        PushListenerProxy.onNotificationReceived(notificationMessage.toString(), PushType.JPUSH);
         super.onNotifyMessageArrived(context, notificationMessage);
     }
 

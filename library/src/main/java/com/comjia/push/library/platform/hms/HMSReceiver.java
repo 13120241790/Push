@@ -26,6 +26,7 @@ public class HMSReceiver extends PushReceiver {
         try {
             String content = new String(msg, "UTF-8");
             Log.d(TAG, "onPushMsg content : " + content);
+            PushListenerProxy.onTransparentMessage(content, PushType.HUAWEI);
         } catch (Exception e) {
             e.printStackTrace();
         }

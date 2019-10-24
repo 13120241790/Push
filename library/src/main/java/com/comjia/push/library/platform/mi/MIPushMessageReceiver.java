@@ -33,6 +33,8 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     @Override
     public void onReceivePassThroughMessage(Context context, MiPushMessage message) {
         mMessage = message.getContent();
+        Log.e("PushMessage", "onTransparentMessage : " + message.toString());
+        PushListenerProxy.onTransparentMessage(message.toString(), PushType.XIAOMI);
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {
@@ -47,6 +49,7 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     public void onNotificationMessageClicked(Context context, MiPushMessage message) {
         mMessage = message.getContent();
         Log.e("PushMessage", " click message string : " + message.toString());
+        PushListenerProxy.onNotificationOpened(message.toString(), PushType.XIAOMI);
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {
@@ -61,6 +64,7 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     public void onNotificationMessageArrived(Context context, MiPushMessage message) {
         mMessage = message.getContent();
         Log.e("PushMessage", "arrived message string : " + message.toString());
+        PushListenerProxy.onNotificationReceived(message.toString(), PushType.XIAOMI);
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {
