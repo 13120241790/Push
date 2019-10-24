@@ -8,6 +8,9 @@ import com.comjia.push.library.PushListenerProxy;
 import com.comjia.push.library.PushType;
 import com.huawei.hms.support.api.push.PushReceiver;
 
+/**
+ * 处理透传和 token
+ */
 public class HMSReceiver extends PushReceiver {
     private final String TAG = "HMSReceiver";
 
@@ -35,12 +38,4 @@ public class HMSReceiver extends PushReceiver {
         Log.e(TAG, "The current push status： " + (pushState ? "Connected" : "Disconnected"));
     }
 
-    @Override
-    public void onEvent(Context context, Event event, Bundle extras) {
-        if (Event.NOTIFICATION_OPENED.equals(event)) {
-
-        } else if (Event.NOTIFICATION_CLICK_BTN.equals(event)) {
-
-        }
-    }
 }
