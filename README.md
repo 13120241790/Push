@@ -27,7 +27,7 @@
    api 'cn.jiguang.sdk:jcore:2.1.6'
   ```
 
-- Min
+- minSdkVersion 16
 
 ### 二 流程
 
@@ -46,6 +46,8 @@
 ​		1 registerId : TODO
 
 ​		2 通知栏与透传 : TODO
+
+​		3 socket 长连接
 
 
 
