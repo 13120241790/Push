@@ -1,11 +1,13 @@
 # Push
-为解决 Android 推送碎片化、到达率低、集成工作量等问题，聚合极光、小米、华为、Vivo等手机厂商提供的第三方推送
+为解决 Android 推送碎片化、到达率低、集成繁琐等问题，聚合极光、小米、华为、Vivo等手机厂商提供的第三方推送
 
 
 
 ### 一 概述
 
-  	  JLPush 目前聚合了极光、小米、华为三大平台的推送、其中小米、华为为厂商推送。Push 的启用默认逻辑是: 如果当前设备品牌是小米或者华为则走对应的厂商平台推送、其余设备机型启用极光推送。
+
+
+> JLPush 目前聚合了极光、小米、华为三大平台的推送、其中小米、华为为厂商推送。Push 的启用默认逻辑是: 如果当前设备品牌是小米或者华为则走对应的厂商平台推送、其余设备机型启用极光推送。
 
 ​	 
 
@@ -13,19 +15,19 @@
 
 - 华为 Push 所用版本 
 
-  ```
+  ```bash
    api 'com.huawei.android.hms:base:2.6.3.301'
    api 'com.huawei.android.hms:push:2.6.3.301'
   ```
 
 - 极光 Push 所用版本
 
-  ```
+  ```bash
    api 'cn.jiguang.sdk:jpush:3.3.6'
    api 'cn.jiguang.sdk:jcore:2.1.6'
   ```
 
-  
+- Min
 
 ### 二 流程
 
@@ -91,23 +93,23 @@
 
    方式 1 : 
 
-   ```
-           PushClient.setOnPushActionListener(new OnPushActionListener() {
-               @Override
-               public void onNotificationReceived(String message, PushType pushType) {
-   								
-               }
+   ```java
+   PushClient.setOnPushActionListener(new OnPushActionListener() {
+       @Override
+       public void onNotificationReceived(String message, PushType pushType) {
    
-               @Override
-               public void onNotificationOpened(String message, PushType pushType) {
+       }
    
-               }
+       @Override
+       public void onNotificationOpened(String message, PushType pushType) {
    
-               @Override
-               public void onTransparentMessage(String message, PushType pushType) {
+       }
    
-               }
-           });
+       @Override
+       public void onTransparentMessage(String message, PushType pushType) {
+   
+       }
+   });
    ```
 
 
@@ -115,6 +117,36 @@
 ​	方式 2 : 广播接收 TODO 
 
 
+
+### 六 API
+
+TODO
+
+
+
+### 七 测试
+
+1 日志分析:
+
+2 小米推送管理后台
+
+3 华为推送管理后台
+
+4 极光推送管理后
+
+TODO	
+
+
+
+### 八 FQA
+
+TODO
+
+
+
+### 九 Branch & Tag
+
+- 2019 年 11 月 华为由 Hms 2.x  版本全面升级 Hms 3.x 。集成和接入方式以及文档完全变更。为此 JLPush 库同步开发 Hms 3.x ，详见分支 [hms_version_3](https://github.com/13120241790/Push/tree/hms_version_3) 
 
 
 
