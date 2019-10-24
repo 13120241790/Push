@@ -37,7 +37,7 @@
 
 
 
-其中 App 应用层的职责是: 将 JLPush 库返回的 registerId 上报给自己的 App server , App sever 能够通过各平台提供接口给 App 端下发通知。应用层需要处理 JLPush 聚合接口返回的通知做对应处理，例如: 弹出通知栏或者打开应用指定跳转界面
+其中 App 应用层的职责是: 将 JLPush 库返回的 registerId 上报给自己的 App server ， App sever 能够通过各平台提供接口给 App 端下发通知。应用层需要处理 JLPush 聚合接口返回的通知做对应处理，例如: 弹出通知栏或者打开应用指定跳转界面。
 
 
 
@@ -93,7 +93,17 @@
 
 3.  处理消息
 
-   方式 1 : 
+   方式 1: 
+
+   ​	自定义 class 继承  com.comjia.push.library.core.PushReceiver ，AndroidManifest.xml 对广播做做静态注册 如下:
+
+   
+
+   ​	随后实现 PushReceiver 中的方法对通知的抵达以及点击状态等做处理
+
+   
+
+   方式 2 : 
 
    ```java
    PushClient.setOnPushActionListener(new OnPushActionListener() {
@@ -113,10 +123,6 @@
        }
    });
    ```
-
-
-
-​	方式 2 : 广播接收 TODO 
 
 
 
@@ -148,7 +154,7 @@ TODO
 
 ### 九 Branch & Tag
 
-- 2019 年 11 月 华为由 Hms 2.x  版本全面升级 Hms 3.x 。集成和接入方式以及文档完全变更。为此 JLPush 库同步开发 Hms 3.x ，详见分支 [hms_version_3](https://github.com/13120241790/Push/tree/hms_version_3) 
+- 2019 年 11 月 华为由 Hms 2.x  版本全面升级 Hms 3.x ，集成和接入方式以及文档完全变更。为此 JLPush 库同步开发 Hms 3.x ，详见分支 [hms_version_3](https://github.com/13120241790/Push/tree/hms_version_3) 。
 
 
 
