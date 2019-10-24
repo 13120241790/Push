@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTransparentMessage(Object o) {
+            public void onTransparentMessage(String message, PushType pushType) {
 
             }
         });
