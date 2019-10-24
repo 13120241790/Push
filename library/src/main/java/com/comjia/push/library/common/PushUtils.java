@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.comjia.push.library.PushType;
+import com.comjia.push.library.core.PushType;
 
 
 public class PushUtils {

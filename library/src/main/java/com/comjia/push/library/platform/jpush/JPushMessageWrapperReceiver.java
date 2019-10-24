@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.comjia.push.library.PushListenerProxy;
-import com.comjia.push.library.PushType;
+import com.comjia.push.library.core.PushListenerProxy;
+import com.comjia.push.library.core.PushType;
 
 import cn.jpush.android.api.CmdMessage;
 import cn.jpush.android.api.CustomMessage;

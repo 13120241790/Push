@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.comjia.push.library.PushListenerProxy;
-import com.comjia.push.library.PushType;
+import com.comjia.push.library.core.PushListenerProxy;
+import com.comjia.push.library.core.PushType;
 import com.huawei.hms.support.api.push.PushReceiver;
 
 /**

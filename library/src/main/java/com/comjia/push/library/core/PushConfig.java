@@ -1,4 +1,4 @@
-package com.comjia.push.library;
+package com.comjia.push.library.core;
 
 public class PushConfig {
 

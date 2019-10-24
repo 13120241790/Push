@@ -4,8 +4,8 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.comjia.push.library.PushListenerProxy;
-import com.comjia.push.library.PushType;
+import com.comjia.push.library.core.PushListenerProxy;
+import com.comjia.push.library.core.PushType;
 import com.xiaomi.mipush.sdk.ErrorCode;
 import com.xiaomi.mipush.sdk.MiPushClient;
 import com.xiaomi.mipush.sdk.MiPushCommandMessage;

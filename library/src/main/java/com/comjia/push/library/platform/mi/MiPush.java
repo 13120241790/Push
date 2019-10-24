@@ -3,7 +3,7 @@ package com.comjia.push.library.platform.mi;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.comjia.push.library.PushConfig;
+import com.comjia.push.library.core.PushConfig;
 import com.comjia.push.library.platform.IPush;
 import com.xiaomi.mipush.sdk.MiPushClient;
 

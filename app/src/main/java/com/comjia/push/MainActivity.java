@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.comjia.push.library.OnPushActionListener;
-import com.comjia.push.library.PushClient;
-import com.comjia.push.library.PushType;
+import com.comjia.push.library.core.PushClient;
+import com.comjia.push.library.core.PushType;
 
 public class MainActivity extends AppCompatActivity {
 

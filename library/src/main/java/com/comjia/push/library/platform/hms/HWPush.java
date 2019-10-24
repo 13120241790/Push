@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
 
-import com.comjia.push.library.PushConfig;
+import com.comjia.push.library.core.PushConfig;
 import com.comjia.push.library.platform.IPush;
 import com.huawei.android.hms.agent.HMSAgent;
 import com.huawei.android.hms.agent.common.handler.ConnectHandler;

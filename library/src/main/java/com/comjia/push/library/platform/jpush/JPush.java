@@ -2,11 +2,10 @@ package com.comjia.push.library.platform.jpush;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.comjia.push.library.PushConfig;
-import com.comjia.push.library.PushListenerProxy;
-import com.comjia.push.library.PushType;
+import com.comjia.push.library.core.PushConfig;
+import com.comjia.push.library.core.PushListenerProxy;
+import com.comjia.push.library.core.PushType;
 import com.comjia.push.library.platform.IPush;
 
 import cn.jpush.android.api.JPushInterface;

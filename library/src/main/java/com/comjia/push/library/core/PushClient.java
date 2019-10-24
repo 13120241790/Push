@@ -1,8 +1,10 @@
-package com.comjia.push.library;
+package com.comjia.push.library.core;
 
 import android.content.Context;
 import android.util.Log;
 
+import com.comjia.push.library.OnPushActionListener;
+import com.comjia.push.library.PushStatusListener;
 import com.comjia.push.library.common.PushUtils;
 import com.comjia.push.library.platform.IPush;
 import com.comjia.push.library.platform.hms.HWPush;

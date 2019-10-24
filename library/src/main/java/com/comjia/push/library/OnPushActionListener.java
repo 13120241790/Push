@@ -1,5 +1,7 @@
 package com.comjia.push.library;
 
+import com.comjia.push.library.core.PushType;
+
 public interface OnPushActionListener {
     /**
      * 通知栏方式消息抵达

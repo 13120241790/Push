@@ -5,10 +5,10 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-import com.comjia.push.library.PushClient;
-import com.comjia.push.library.PushConfig;
+import com.comjia.push.library.core.PushClient;
+import com.comjia.push.library.core.PushConfig;
 import com.comjia.push.library.PushStatusListener;
-import com.comjia.push.library.PushType;
+import com.comjia.push.library.core.PushType;
 
 import java.util.List;
 
