@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.comjia.push.library.common.PushUtils;
 import com.comjia.push.library.core.PushListenerProxy;
 import com.comjia.push.library.core.PushType;
 
@@ -28,6 +29,7 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
     public void onNotifyMessageOpened(Context context, NotificationMessage notificationMessage) {
         Log.e("PushMessage", "click message string : " + notificationMessage.toString());
         PushListenerProxy.onNotificationOpened(notificationMessage.toString(), PushType.JPUSH);
+        PushUtils.onNotificationMessageOpened(context, PushType.JPUSH, notificationMessage.toString());
         Log.e(TAG, "onNotifyMessageOpened : " + notificationMessage.notificationContent);
         super.onNotifyMessageOpened(context, notificationMessage);
     }
@@ -51,6 +53,7 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
         Log.e("PushMessage", "arrived message string : " + notificationMessage.toString());
         Log.e(TAG, "onNotifyMessageArrived : " + notificationMessage.notificationContent);
         PushListenerProxy.onNotificationReceived(notificationMessage.toString(), PushType.JPUSH);
+        PushUtils.onNotificationMessageArrived(context, PushType.JPUSH, notificationMessage.toString());
         super.onNotifyMessageArrived(context, notificationMessage);
     }
 
