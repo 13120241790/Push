@@ -13,6 +13,10 @@ import cn.jpush.android.api.CustomMessage;
 import cn.jpush.android.api.NotificationMessage;
 import cn.jpush.android.service.JPushMessageReceiver;
 
+/**
+ * 测试情况 : 极光进程没有被杀死能收到抵达 和点击通知的事件
+ * 杀死进程后无法收到 服务器会缓存这个推送消息 用户再次开启应用时会再次下发此推送
+ */
 public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
 
     public static final String TAG = "JPushMessageReceiver";
