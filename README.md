@@ -45,7 +45,7 @@
 
 ​		1 registerId : 各个推送平台客户端与推送服务端对应的秘钥，启动 App 调用初始化等接口时，如果初始化成功平台 SDK 应该会返回此值，某些平台也叫 token 一般拿到这个 registerId 去推送平台做接入调试或者上报给应用服务器。
 
-​		2 通知栏与透传 : TODO
+​		2 通知栏与透传 : 受限于 Android 系统后台进程驻留机制，后台进程长时间保持存活越来越困难。推送厂商直接提供系统级别的推送来保证推送的到达率一般这样的推送方式称谓通知栏方式，特点是由系统保证推送到达率高，但是可自定义程度低，透传方式反之。
 
 ​		3 socket 长连接
 
@@ -100,14 +100,14 @@
    ​	
 
    ```bash
-  <receiver
-               android:name=".AppPushReceiver"
-            android:exported="true">
-               <intent-filter>
-                <action android:name="com.comjia.push.intent.MESSAGE_ARRIVED" />
-                   <action android:name="com.comjia.push.intent.MESSAGE_CLICKED" />
-               </intent-filter>
-           </receiver>
+<receiver
+       android:name=".AppPushReceiver"
+    android:exported="true">
+       <intent-filter>
+    <action android:name="com.comjia.push.intent.MESSAGE_ARRIVED" />
+       <action android:name="com.comjia.push.intent.MESSAGE_CLICKED" />
+       </intent-filter>
+   </receiver>
    ```
    
    
