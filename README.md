@@ -43,7 +43,7 @@
 
 ### 三 名词解释
 
-​		1 registerId : TODO
+​		1 registerId : 各个推送平台客户端与推送服务端对应的秘钥，启动 App 调用初始化等接口时，如果初始化成功平台 SDK 应该会返回此值，某些平台也叫 token 一般拿到这个 registerId 去推送平台做接入调试或者上报给应用服务器。
 
 ​		2 通知栏与透传 : TODO
 
@@ -97,14 +97,48 @@
 
    ​	自定义 class 继承  com.comjia.push.library.core.PushReceiver ，AndroidManifest.xml 对广播做做静态注册 如下:
 
-   
+   ​	
 
+   ```bash
+  <receiver
+               android:name=".AppPushReceiver"
+            android:exported="true">
+               <intent-filter>
+                <action android:name="com.comjia.push.intent.MESSAGE_ARRIVED" />
+                   <action android:name="com.comjia.push.intent.MESSAGE_CLICKED" />
+               </intent-filter>
+           </receiver>
+   ```
+   
+   
+   
+   ```java
+   public class AppPushReceiver extends PushReceiver {
+   
+       public static final String TAG = AppPushReceiver.class.getSimpleName();
+   
+       @Override
+       public boolean onNotificationMessageArrived(Context context, PushType pushType, String notificationMessage) {
+           Log.e(TAG, "onNotificationMessageArrived push type ：" + pushType + " message ：" + notificationMessage);
+           return false;
+       }
+   
+       @Override
+       public boolean onNotificationMessageClicked(Context context, PushType pushType, String notificationMessage) {
+           Log.e(TAG, "onNotificationMessageClicked push type ：" + pushType + " message ：" + notificationMessage);
+           return false;
+       }
+   }
+   ```
+   
+   
+   
    ​	随后实现 PushReceiver 中的方法对通知的抵达以及点击状态等做处理
-
    
-
+   
+   
    方式 2 : 
-
+   
    ```java
    PushClient.setOnPushActionListener(new OnPushActionListener() {
        @Override

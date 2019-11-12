@@ -52,10 +52,11 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     //通知栏
     @Override
     public void onNotificationMessageClicked(Context context, MiPushMessage message) {
+        Log.e("PushMessage", " click message string : " + message.toString());
         mMessage = message.getContent();
         PushListenerProxy.onNotificationOpened(message.toString(), PushType.XIAOMI);
         PushUtils.onNotificationMessageOpened(context, PushType.XIAOMI, message.toString());
-        Log.e("PushMessage", " click message string : " + message.toString());
+
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {
@@ -68,10 +69,10 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     //通知栏
     @Override
     public void onNotificationMessageArrived(Context context, MiPushMessage message) {
+        Log.e("PushMessage", "arrived message string : " + message.toString());
         mMessage = message.getContent();
         PushListenerProxy.onNotificationReceived(message.toString(), PushType.XIAOMI);
         PushUtils.onNotificationMessageArrived(context, PushType.XIAOMI, message.toString());
-        Log.e("PushMessage", "arrived message string : " + message.toString());
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {
