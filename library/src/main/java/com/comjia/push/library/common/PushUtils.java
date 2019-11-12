@@ -80,8 +80,7 @@ public class PushUtils {
      * @param pushNotificationMessage 通知消息
      */
     public static void onNotificationMessageArrived(Context context, PushType pushType, String pushNotificationMessage) {
-        Log.d(TAG,
-                "onNotificationMessageArrived is called. " + pushNotificationMessage);
+        Log.d(TAG, "onNotificationMessageArrived is called. " + pushNotificationMessage);
 
         Intent intent = new Intent();
         intent.setAction(PushConst.ACTION_NOTIFICATION_MESSAGE_ARRIVED);
@@ -99,8 +98,7 @@ public class PushUtils {
      * @param pushNotificationMessage 通知消息
      */
     public static void onNotificationMessageOpened(Context context, PushType pushType, String pushNotificationMessage) {
-        Log.d(TAG,
-                "onNotificationMessageOpened is called. " + pushNotificationMessage);
+        Log.d(TAG, "onNotificationMessageOpened is called. " + pushNotificationMessage);
 
         Intent intent = new Intent();
         intent.setAction(PushConst.ACTION_NOTIFICATION_MESSAGE_CLICKED);

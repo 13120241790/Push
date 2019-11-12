@@ -2,6 +2,7 @@ package com.comjia.push;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.comjia.push.library.OnPushActionListener;
 import com.comjia.push.library.core.PushClient;
@@ -18,17 +19,17 @@ public class MainActivity extends AppCompatActivity {
         PushClient.setOnPushActionListener(new OnPushActionListener() {
             @Override
             public void onNotificationReceived(String message, PushType pushType) {
-
+                Log.e(TAG, "Listener onNotificationReceived pushType：" + pushType.getName() + " message：" + message);
             }
 
             @Override
             public void onNotificationOpened(String message, PushType pushType) {
-
+                Log.e(TAG, "Listener onNotificationOpened pushType：" + pushType.getName() + " message：" + message);
             }
 
             @Override
             public void onTransparentMessage(String message, PushType pushType) {
-
+                Log.e(TAG, "Listener onTransparentMessage pushType：" + pushType.getName() + " message：" + message);
             }
         });
     }

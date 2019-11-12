@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.comjia.push.library.common.PushUtils;
 import com.comjia.push.library.core.PushListenerProxy;
 import com.comjia.push.library.core.PushType;
 import com.xiaomi.mipush.sdk.ErrorCode;
@@ -50,6 +51,7 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
         mMessage = message.getContent();
         Log.e("PushMessage", " click message string : " + message.toString());
         PushListenerProxy.onNotificationOpened(message.toString(), PushType.XIAOMI);
+        PushUtils.onNotificationMessageOpened(context, PushType.XIAOMI, message.toString());
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {
@@ -65,6 +67,7 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
         mMessage = message.getContent();
         Log.e("PushMessage", "arrived message string : " + message.toString());
         PushListenerProxy.onNotificationReceived(message.toString(), PushType.XIAOMI);
+        PushUtils.onNotificationMessageArrived(context, PushType.XIAOMI, message.toString());
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {

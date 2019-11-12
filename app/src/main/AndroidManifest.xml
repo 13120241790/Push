@@ -17,6 +17,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".AppPushReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.comjia.push.intent.MESSAGE_ARRIVED" />
+                <action android:name="com.comjia.push.intent.MESSAGE_CLICKED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
