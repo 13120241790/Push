@@ -15,6 +15,10 @@ import com.xiaomi.mipush.sdk.PushMessageReceiver;
 
 import java.util.List;
 
+/**
+ * 11月12日自测记录小米手机杀死进程能收到推送但是 不会走点击和抵达的监听
+ * 切换到后台和前台都可以
+ */
 public class MIPushMessageReceiver extends PushMessageReceiver {
 
     public static final String TAG = MIPushMessageReceiver.class.getSimpleName();
@@ -49,9 +53,9 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     @Override
     public void onNotificationMessageClicked(Context context, MiPushMessage message) {
         mMessage = message.getContent();
-        Log.e("PushMessage", " click message string : " + message.toString());
         PushListenerProxy.onNotificationOpened(message.toString(), PushType.XIAOMI);
         PushUtils.onNotificationMessageOpened(context, PushType.XIAOMI, message.toString());
+        Log.e("PushMessage", " click message string : " + message.toString());
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {
@@ -65,9 +69,9 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     @Override
     public void onNotificationMessageArrived(Context context, MiPushMessage message) {
         mMessage = message.getContent();
-        Log.e("PushMessage", "arrived message string : " + message.toString());
         PushListenerProxy.onNotificationReceived(message.toString(), PushType.XIAOMI);
         PushUtils.onNotificationMessageArrived(context, PushType.XIAOMI, message.toString());
+        Log.e("PushMessage", "arrived message string : " + message.toString());
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
         } else if (!TextUtils.isEmpty(message.getAlias())) {

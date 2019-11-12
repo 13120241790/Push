@@ -20,7 +20,7 @@ public abstract class PushReceiver extends BroadcastReceiver {
             return;
         }
 
-        String message = intent.getParcelableExtra(PushConst.MESSAGE);
+        String message = intent.getStringExtra(PushConst.MESSAGE);
         if (message == null) {
             Log.e(TAG, "message is null. Return directly!");
             return;
