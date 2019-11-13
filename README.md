@@ -180,7 +180,11 @@ http://admin.xmpush.xiaomi.com/
 
 4 极光推送管理后
 
-TODO	
+[极光推送管理后台](https://www.jiguang.cn/jpush2/#/app/0dc337f2661e3264374bcd05/push_form/notification)
+
+![20191113102409](images/20191113102409.jpg)
+
+
 
 
 
