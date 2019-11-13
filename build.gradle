@@ -19,6 +19,18 @@ allprojects {
         google()
         jcenter()
         maven {url 'http://developer.huawei.com/repo/'}
+
+        maven {
+            url 'http://git.comjia.com:8888/Android/JLRepo/raw/master/'
+            credentials(HttpHeaderCredentials) {
+                name = "Private-Token"
+                value = ""
+            }
+            authentication {
+                header(HttpHeaderAuthentication)
+            }
+        }
+
     }
 }
 

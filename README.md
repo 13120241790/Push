@@ -53,7 +53,7 @@
 
 ### 四 集成准备
 
-​      TODO
+​      访问小米、华为、极光推送平台注册账号、随后创建应用。获取各个平台的 secret  appkey  appid 等重要数据
 
 
 
@@ -61,7 +61,27 @@
 
 
 
-1. 依赖添加 : TODO
+1. 依赖添加 : 
+
+   ```bash
+   implementation 'com.comjia:push:1.0'
+   ```
+
+   
+
+   APP 的 build.gradle 的 buildTypes 中 新增华为和极光的(可选) 秘钥配置
+
+   ```bash
+               manifestPlaceholders = [
+                       JPUSH_PKGNAME: 'com.comjia.push',
+                       JPUSH_APPKEY : "your appkey", //JPush 上注册的包名对应的 Appkey.
+                       JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+                       
+                       HUAWEI_APPID : "your appid"
+               ]
+   ```
+
+   
 
 2. 初始化:
 
@@ -91,7 +111,7 @@
 
    
 
-3.  处理消息
+3. 处理消息
 
    方式 1: 
 
@@ -100,18 +120,18 @@
    ​	
 
    ```bash
-<receiver
+   <receiver
        android:name=".AppPushReceiver"
-    android:exported="true">
+       android:exported="true">
        <intent-filter>
-    <action android:name="com.comjia.push.intent.MESSAGE_ARRIVED" />
+       <action android:name="com.comjia.push.intent.MESSAGE_ARRIVED" />
        <action android:name="com.comjia.push.intent.MESSAGE_CLICKED" />
        </intent-filter>
    </receiver>
    ```
+
    
-   
-   
+
    ```java
    public class AppPushReceiver extends PushReceiver {
    
@@ -130,15 +150,15 @@
        }
    }
    ```
+
    
-   
-   
+
    ​	随后实现 PushReceiver 中的方法对通知的抵达以及点击状态等做处理
+
    
-   
-   
+
    方式 2 : 
-   
+
    ```java
    PushClient.setOnPushActionListener(new OnPushActionListener() {
        @Override

@@ -56,7 +56,8 @@
         <!-- 华为推送 start -->
         <meta-data
             android:name="com.huawei.hms.client.appid"
-            android:value="101221803" />
+            android:value="appid=${HUAWEI_APPID}" />
+
         <!-- BridgeActivity定义了HMS-SDK中一些跳转所需要的透明页面-->
         <activity
             android:name="com.huawei.hms.activity.BridgeActivity"
@@ -112,6 +113,7 @@
         <!-- 第三方相关 :接收Push消息（注册、Push消息、Push连接状态）广播 -->
         <receiver
             android:name=".platform.hms.HMSReceiver"
+            android:exported="true"
             android:permission="${applicationId}.permission.PROCESS_PUSH_MSG">
             <intent-filter>
                 <!-- 必须,用于接收token -->
@@ -126,6 +128,7 @@
 
         <receiver
             android:name=".platform.hms.HMSSystemReceiver"
+            android:exported="true"
             android:permission="${applicationId}.permission.PROCESS_PUSH_MSG">
             <intent-filter>
                 <!-- 可选，用于点击通知栏或通知栏上的按钮后触发onEvent回调 -->
@@ -135,6 +138,19 @@
                 <action android:name="com.huawei.intent.action.PUSH_DELAY_NOTIFY" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".platform.hms.NotifyDetailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.action.DELETE" />
+
+                <data
+                    android:host="com.huawei.pushtest"
+                    android:path="/notify_detail"
+                    android:scheme="customscheme" />
+            </intent-filter>
+        </activity>
+
         <!-- 华为推送 end -->
 
         <!--极光 start -->
