@@ -42,10 +42,10 @@ public class PushUtils {
             String appId = String.valueOf(applicationInfo.metaData.getInt("com.huawei.hms.client.appid"));
             Log.e("checkAppkey", "appkey : " + appId);
             if (TextUtils.isEmpty(appId)) {
-                throw new NullPointerException("HuaWei manifest.xml appId is empty~!");
+                Log.e(TAG, "HuaWei manifest.xml appId is empty~!");
             }
             if (appId.contains(" ")) {
-                throw new NullPointerException("HuaWei appId contain Space ~!");
+                Log.e(TAG, "HuaWei appId contain Space ~!");
             }
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -61,10 +61,10 @@ public class PushUtils {
             String appId = applicationInfo.metaData.getString("JPUSH_APPKEY");
             Log.e("checkAppkey", "appkey : " + appId);
             if (TextUtils.isEmpty(appId)) {
-                throw new NullPointerException("JPush manifest.xml appId is empty~!");
+                Log.e(TAG, "JPush manifest.xml appId is empty~!");
             }
             if (appId.contains(" ")) {
-                throw new NullPointerException("JPush appId contain Space ~!");
+                Log.e(TAG, "JPush appId contain Space ~!");
             }
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
