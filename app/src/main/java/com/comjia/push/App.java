@@ -22,7 +22,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         //初始化push推送服务
         if (shouldInit()) {
             PushConfig config = new PushConfig().configMiPush(MI_APP_ID, MI_APP_KEY);

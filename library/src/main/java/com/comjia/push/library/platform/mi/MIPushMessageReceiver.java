@@ -1,6 +1,7 @@
 package com.comjia.push.library.platform.mi;
 
 import android.content.Context;
+import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -15,10 +16,6 @@ import com.xiaomi.mipush.sdk.PushMessageReceiver;
 
 import java.util.List;
 
-/**
- * 11月12日自测记录小米手机杀死进程能收到推送但是 不会走点击和抵达的监听
- * 切换到后台和前台都可以
- */
 public class MIPushMessageReceiver extends PushMessageReceiver {
 
     public static final String TAG = MIPushMessageReceiver.class.getSimpleName();
@@ -53,9 +50,12 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     @Override
     public void onNotificationMessageClicked(Context context, MiPushMessage message) {
         Log.e("PushMessage", " click message string : " + message.toString());
+        Log.e("Process", "Process id:" + Process.myPid());
         mMessage = message.getContent();
         PushListenerProxy.onNotificationOpened(message.toString(), PushType.XIAOMI);
+        Log.e("PushMessage", " PushListenerProxy : " + mMessage);
         PushUtils.onNotificationMessageOpened(context, PushType.XIAOMI, message.toString());
+        Log.e("PushMessage", " onNotificationMessageOpened : " + message.toString());
 
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();

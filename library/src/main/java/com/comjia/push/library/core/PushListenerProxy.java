@@ -19,10 +19,16 @@ public class PushListenerProxy {
      * 各平台 registerId 回调
      */
     public static void onRegister(String registerId, PushType pushType) {
+        if (mPushStatusListener == null) {
+            return;
+        }
         mPushStatusListener.onRegister(registerId, pushType);
     }
 
     public static void onError(String errorCode, PushType pushType) {
+        if (mPushStatusListener == null) {
+            return;
+        }
         mPushStatusListener.onError(errorCode, pushType);
     }
 
@@ -34,6 +40,9 @@ public class PushListenerProxy {
      * 通知栏消息抵达
      */
     public static void onNotificationReceived(String message, PushType pushType) {
+        if (mOnPushActionListener == null) {
+            return;
+        }
         mOnPushActionListener.onNotificationReceived(message, pushType);
     }
 
@@ -41,6 +50,9 @@ public class PushListenerProxy {
      * 通知栏消息打开
      */
     public static void onNotificationOpened(String message, PushType pushType) {
+        if (mOnPushActionListener == null) {
+            return;
+        }
         mOnPushActionListener.onNotificationOpened(message, pushType);
     }
 
@@ -48,6 +60,9 @@ public class PushListenerProxy {
      * 部分平台的透传消息
      */
     public static void onTransparentMessage(String message, PushType pushType) {
+        if (mOnPushActionListener == null) {
+            return;
+        }
         mOnPushActionListener.onTransparentMessage(message, pushType);
     }
 
