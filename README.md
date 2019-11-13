@@ -64,16 +64,26 @@
 1. 依赖添加 : 
 
    ```bash
-   implementation 'com.comjia:push:1.0'
+   implementation 'com.comjia:push:1.0.1'
    ```
 
    
 
-   APP 的 build.gradle 的 buildTypes 中 新增华为和极光的(可选) 秘钥配置
+   APP 的 build.gradle 的 buildTypes 中 新增华为和极光的秘钥配置 
+
+   此处如果不适用极光平台，也需要把填上。编译期绕过 SDK 配置检查
+
+   ```
+   JPUSH_PKGNAME: 'x',//填任意字符串
+   JPUSH_APPKEY : "", //不使用空
+   JPUSH_CHANNEL: "", //不使用空
+   ```
+
+   全使用
 
    ```bash
                manifestPlaceholders = [
-                       JPUSH_PKGNAME: 'com.comjia.push',
+                       JPUSH_PKGNAME: 'com.comjia.push',//应用包名
                        JPUSH_APPKEY : "your appkey", //JPush 上注册的包名对应的 Appkey.
                        JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
                        
