@@ -64,7 +64,7 @@
 1. 依赖添加 : 
 
    ```bash
-   implementation 'com.comjia:push:1.0.1'
+   implementation 'com.comjia:push:1.0.2'
    ```
 
    
@@ -202,6 +202,12 @@ TODO
 
 1 日志分析:
 
+库的日志过滤关键字为 jlpush ，以下以小米为例做一个成功流程的日志分析:
+
+![20191114140320](images/20191114140320.jpg)
+
+
+
 2 小米推送管理后台
 
 http://admin.xmpush.xiaomi.com/ 
@@ -235,5 +241,16 @@ http://admin.xmpush.xiaomi.com/
 - 2019 年 11 月 华为由 Hms 2.x  版本全面升级 Hms 3.x ，集成和接入方式以及文档完全变更。为此 JLPush 库同步开发 Hms 3.x ，详见分支 [hms_version_3](https://github.com/13120241790/Push/tree/hms_version_3) 。
 
 
+
+### 十 ReleaseNote
+
+	- 1.0.1 去除华为和极光 appkey manifest 配置强校验，改为日志打印
+	- 1.0.2 修改全局日志输出打印，补充日志分析
+
+
+
+### 十一 Push 库增量
+
+//TODO
 
 未完待续...

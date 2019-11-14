@@ -8,6 +8,8 @@ import com.comjia.push.library.core.PushListenerProxy;
 import com.comjia.push.library.core.PushType;
 import com.huawei.hms.support.api.push.PushReceiver;
 
+import static com.comjia.push.library.common.PushConst.PUSH_TAG;
+
 /**
  * 处理透传和 token
  */
@@ -16,7 +18,7 @@ public class HMSReceiver extends PushReceiver {
 
     @Override
     public void onToken(Context context, String token, Bundle bundle) {
-        Log.e(TAG, "token: " + token);
+        Log.e(PUSH_TAG, "register successful hw register id: " + token);
         PushListenerProxy.onRegister(token, PushType.HUAWEI);
     }
 

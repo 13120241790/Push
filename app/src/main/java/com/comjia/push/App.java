@@ -17,7 +17,6 @@ public class App extends Application {
 
     public static final String MI_APP_ID = "2882303761518212082";
     public static final String MI_APP_KEY = "5671821258082";
-    public static final String TAG = PushClient.TAG;
 
     @Override
     public void onCreate() {
@@ -28,7 +27,7 @@ public class App extends Application {
             PushClient.init(this, config, new PushStatusListener() {
                 @Override
                 public void onRegister(String registerId, PushType pushType) {
-                    Log.e(TAG, "push type: " + pushType.getName() + " push regId :" + registerId);
+                    Log.e(App.class.getSimpleName(), "push type: " + pushType.getName() + " push regId :" + registerId);
                 }
 
                 @Override

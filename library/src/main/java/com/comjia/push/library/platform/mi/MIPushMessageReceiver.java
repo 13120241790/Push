@@ -1,7 +1,6 @@
 package com.comjia.push.library.platform.mi;
 
 import android.content.Context;
-import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -15,6 +14,10 @@ import com.xiaomi.mipush.sdk.MiPushMessage;
 import com.xiaomi.mipush.sdk.PushMessageReceiver;
 
 import java.util.List;
+
+import static com.comjia.push.library.common.PushConst.PUSH_LOG_ARRIVED;
+import static com.comjia.push.library.common.PushConst.PUSH_LOG_CLICK;
+import static com.comjia.push.library.common.PushConst.PUSH_TAG;
 
 public class MIPushMessageReceiver extends PushMessageReceiver {
 
@@ -49,13 +52,11 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     //通知栏
     @Override
     public void onNotificationMessageClicked(Context context, MiPushMessage message) {
+        Log.e(PUSH_TAG, PUSH_LOG_CLICK + PushType.XIAOMI.getName());
         Log.e("PushMessage", " click message string : " + message.toString());
-        Log.e("Process", "Process id:" + Process.myPid());
         mMessage = message.getContent();
         PushListenerProxy.onNotificationOpened(message.toString(), PushType.XIAOMI);
-        Log.e("PushMessage", " PushListenerProxy : " + mMessage);
         PushUtils.onNotificationMessageOpened(context, PushType.XIAOMI, message.toString());
-        Log.e("PushMessage", " onNotificationMessageOpened : " + message.toString());
 
         if (!TextUtils.isEmpty(message.getTopic())) {
             mTopic = message.getTopic();
@@ -69,6 +70,7 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
     //通知栏
     @Override
     public void onNotificationMessageArrived(Context context, MiPushMessage message) {
+        Log.e(PUSH_TAG, PUSH_LOG_ARRIVED + PushType.XIAOMI.getName());
         Log.e("PushMessage", "arrived message string : " + message.toString());
         mMessage = message.getContent();
         PushListenerProxy.onNotificationReceived(message.toString(), PushType.XIAOMI);
@@ -92,9 +94,9 @@ public class MIPushMessageReceiver extends PushMessageReceiver {
             if (message.getResultCode() == ErrorCode.SUCCESS) {
                 mRegId = cmdArg1;
                 if (!TextUtils.isEmpty(mRegId)) {
+                    Log.e(PUSH_TAG, "register successful mi register id: " + mRegId);
                     PushListenerProxy.onRegister(mRegId, PushType.XIAOMI);
                 }
-                Log.e(TAG, "onCommandResult regId :" + mRegId);
             }
         } else if (MiPushClient.COMMAND_SET_ALIAS.equals(command)) {
             if (message.getResultCode() == ErrorCode.SUCCESS) {

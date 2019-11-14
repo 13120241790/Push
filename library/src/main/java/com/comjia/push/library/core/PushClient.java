@@ -11,9 +11,9 @@ import com.comjia.push.library.platform.hms.HWPush;
 import com.comjia.push.library.platform.jpush.JPush;
 import com.comjia.push.library.platform.mi.MiPush;
 
-public class PushClient {
+import static com.comjia.push.library.common.PushConst.PUSH_TAG;
 
-    public static final String TAG = PushClient.class.getSimpleName();
+public class PushClient {
 
     /**
      * JLPush 聚合库初始化接口, 请在主进程中调用
@@ -23,6 +23,7 @@ public class PushClient {
      * @param pushStatusListener 获取上报 regId 和注册状态的监听
      */
     public static void init(Context context, PushConfig config, PushStatusListener pushStatusListener) {
+        Log.e(PUSH_TAG, "init");
         if (config == null) {
             throw new NullPointerException("Push config is empty~!");
         }
@@ -35,7 +36,7 @@ public class PushClient {
             currentPushType = config.getOnlyPush();
         } else {
             currentPushType = PushUtils.getCurrentPushType(context); //获取当前设备品牌
-            Log.e(TAG, "current devices type is :" + currentPushType.getName());
+            Log.e(PUSH_TAG, "current devices type is :" + currentPushType.getName());
         }
         IPush push;
         if (currentPushType == PushType.HUAWEI) {

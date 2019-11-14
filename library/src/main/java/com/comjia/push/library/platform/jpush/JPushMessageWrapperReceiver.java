@@ -13,6 +13,10 @@ import cn.jpush.android.api.CustomMessage;
 import cn.jpush.android.api.NotificationMessage;
 import cn.jpush.android.service.JPushMessageReceiver;
 
+import static com.comjia.push.library.common.PushConst.PUSH_LOG_ARRIVED;
+import static com.comjia.push.library.common.PushConst.PUSH_LOG_CLICK;
+import static com.comjia.push.library.common.PushConst.PUSH_TAG;
+
 /**
  * 测试情况 : 极光进程没有被杀死能收到抵达 和点击通知的事件
  * 杀死进程后无法收到 服务器会缓存这个推送消息 用户再次开启应用时会再次下发此推送
@@ -31,10 +35,9 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
 
     @Override
     public void onNotifyMessageOpened(Context context, NotificationMessage notificationMessage) {
-        Log.e("PushMessage", "click message string : " + notificationMessage.toString());
+        Log.e(PUSH_TAG, PUSH_LOG_CLICK + PushType.JPUSH.getName());
         PushListenerProxy.onNotificationOpened(notificationMessage.toString(), PushType.JPUSH);
         PushUtils.onNotificationMessageOpened(context, PushType.JPUSH, notificationMessage.toString());
-        Log.e(TAG, "onNotifyMessageOpened : " + notificationMessage.notificationContent);
         super.onNotifyMessageOpened(context, notificationMessage);
     }
 
@@ -54,8 +57,7 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
 
     @Override
     public void onNotifyMessageArrived(Context context, NotificationMessage notificationMessage) {
-        Log.e("PushMessage", "arrived message string : " + notificationMessage.toString());
-        Log.e(TAG, "onNotifyMessageArrived : " + notificationMessage.notificationContent);
+        Log.e(PUSH_TAG, PUSH_LOG_ARRIVED + PushType.JPUSH.getName());
         PushListenerProxy.onNotificationReceived(notificationMessage.toString(), PushType.JPUSH);
         PushUtils.onNotificationMessageArrived(context, PushType.JPUSH, notificationMessage.toString());
         super.onNotifyMessageArrived(context, notificationMessage);
@@ -70,6 +72,7 @@ public class JPushMessageWrapperReceiver extends JPushMessageReceiver {
     @Override
     public void onRegister(Context context, String s) {
         // registrationID 仅仅在第一次初始化的时候才会有这个广播，以后要获取需要主动调用 JPushInterface.getRegistrationID
+        Log.e(PUSH_TAG, "register successful jpush register id: " + s);
         PushListenerProxy.onRegister(s, PushType.JPUSH);
         super.onRegister(context, s);
     }

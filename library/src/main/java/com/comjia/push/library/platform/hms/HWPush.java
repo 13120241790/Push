@@ -12,11 +12,14 @@ import com.huawei.android.hms.agent.common.handler.ConnectHandler;
 import com.huawei.android.hms.agent.push.handler.GetTokenHandler;
 import com.huawei.hms.api.ConnectionResult;
 
+import static com.comjia.push.library.common.PushConst.PUSH_TAG;
+
 public class HWPush implements IPush {
     private static final String TAG = HWPush.class.getSimpleName();
 
     @Override
     public void register(final Context context, PushConfig config) {
+        Log.e(PUSH_TAG, "register HW");
         Handler handler = new Handler(context.getMainLooper());
         handler.post(new Runnable() {
             @Override
