@@ -3,6 +3,10 @@
 
 
 
+[TOC]
+
+
+
 ### 一 概述
 
 
@@ -243,6 +247,8 @@ http://admin.xmpush.xiaomi.com/
 
 
 ### 十 ReleaseNote
+
+
 
 	- 1.0.1 去除华为和极光 appkey manifest 配置强校验，改为日志打印
 	- 1.0.2 修改全局日志输出打印，补充日志分析
