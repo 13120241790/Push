@@ -251,6 +251,12 @@ http://admin.xmpush.xiaomi.com/
 
 ### 十一 Push 库增量
 
+依赖 Push 库后工程编译出的 app-debug.apk 大小为 2.8 MB 
+
+去除 Push 库后工程编译出的 app-debug.apk 大小为 1.5 MB
+
+一个测试样例的实际增量为 1.3 MB (未混淆)
+
 //TODO
 
 未完待续...
