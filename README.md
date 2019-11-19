@@ -64,7 +64,7 @@
 1. 依赖添加 : 
 
    ```bash
-   implementation 'com.comjia:push:1.0.2'
+   implementation 'com.comjia:push:1.0.3'
    ```
 
    
