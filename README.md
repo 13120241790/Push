@@ -95,6 +95,16 @@
 
    
 
+   华为私有 maven 项目根目录 build.gradle 添加  
+
+   
+
+   ``` java
+   maven {url 'http://developer.huawei.com/repo/'}
+   ```
+
+   
+
 2. 初始化:
 
    ​	在主进程建议在 application 中进行 push 库的初始化
@@ -250,6 +260,8 @@ http://admin.xmpush.xiaomi.com/
 
 1.0.2 修改全局日志输出打印，补充日志分析
 
+1.0.3 去除 push 库中的 v7 包依赖，避免高低版本引用找不到 v7 某资源的问题
+
 
 
 ### 十一 Push 库增量
@@ -259,6 +271,8 @@ http://admin.xmpush.xiaomi.com/
 去除 Push 库后工程编译出的 app-debug.apk 大小为 1.5 MB
 
 一个测试样例的实际增量为 1.3 MB (未混淆)
+
+二次 release 测试的增量为 1.1 MB
 
 //TODO
 
